@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Elm və Ali Təhsil üzrə Dövlət Agentliyi</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#f6f8fc;--surf:#fff;--ink:#0d1b3d;--mute:#5a6785;--line:#e3e8f2;--pri:#0b4ea2;--pri2:#0a8a7a;--acc:#e8a317;--hero1:#06295c;--hero2:#0b4ea2;--shadow:0 10px 30px rgba(13,27,61,.08)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a1020;--surf:#121a30;--ink:#eef2ff;--mute:#9aa8c9;--line:#222d4a;--pri:#6f93ff;--pri2:#3fd0c9;--hero1:#07102e;--hero2:#14308f;--shadow:0 10px 30px rgba(0,0,0,.4)}}
+:root[data-theme="dark"]{--bg:#0a1020;--surf:#121a30;--ink:#eef2ff;--mute:#9aa8c9;--line:#222d4a;--pri:#6f93ff;--pri2:#3fd0c9;--hero1:#07102e;--hero2:#14308f;--shadow:0 10px 30px rgba(0,0,0,.4)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Inter","Segoe UI",system-ui,-apple-system,sans-serif}
+a{color:inherit;text-decoration:none}
+.w{max-width:1180px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--surf) 88%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--surf)}
+.bar{display:flex;align-items:center;gap:16px;height:68px}
+.logo{display:flex;align-items:center;gap:12px;font-weight:700;font-size:13px;line-height:1.25;max-width:240px}
+.mark{flex:none;width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--pri),var(--pri2));display:grid;place-items:center;color:#fff;font-weight:800;font-size:14px;letter-spacing:.5px}
+nav{display:flex;gap:2px;margin-left:auto}
+.dd{position:relative}
+.dd>button{background:none;border:0;color:var(--ink);font:600 14px inherit;font-family:inherit;padding:10px 12px;border-radius:10px;cursor:pointer}
+.dd>button:hover,.dd:focus-within>button{background:var(--bg)}
+.menu{display:none;position:absolute;top:100%;left:0;min-width:270px;background:var(--surf);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:8px}
+.dd:hover .menu,.dd:focus-within .menu{display:block}
+.menu a{display:block;padding:8px 12px;border-radius:8px;font-size:14px;color:var(--mute)}
+.menu a:hover{background:var(--bg);color:var(--pri)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:12px;font-weight:600;font-size:14px;background:var(--pri);color:#fff;border:0;cursor:pointer}
+.btn.ghost{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3)}
+.ic{background:none;border:1px solid var(--line);color:var(--ink);width:40px;height:40px;border-radius:10px;cursor:pointer;font-size:16px}
+#burger{display:none}
+.hero{background:radial-gradient(circle at 85% 10%,rgba(63,208,201,.35),transparent 45%),linear-gradient(135deg,var(--hero1),var(--hero2));color:#fff;padding:76px 0 120px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;width:520px;height:520px;border-radius:50%;border:80px solid rgba(255,255,255,.05);right:-140px;bottom:-220px}
+.tag{display:inline-block;background:rgba(255,255,255,.14);padding:6px 14px;border-radius:99px;font-size:13px;font-weight:600;margin-bottom:18px}
+h1{font-size:clamp(30px,5vw,52px);line-height:1.12;margin:0 0 18px;max-width:780px;letter-spacing:-.02em}
+.hero p{max-width:640px;opacity:.88;font-size:17px;margin:0 0 28px}
+.hero .btn:first-of-type{background:#fff;color:var(--hero1)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:-64px;position:relative;z-index:2}
+.stat{background:var(--surf);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--shadow)}
+.stat b{display:block;font-size:36px;line-height:1.1;color:var(--pri);letter-spacing:-.02em}
+.stat span{font-size:13px;color:var(--mute)}
+section{padding:64px 0 0}
+.head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:26px}
+h2{font-size:clamp(24px,3.4vw,34px);margin:0;letter-spacing:-.02em}
+.head p{margin:6px 0 0;color:var(--mute);max-width:560px}
+.more{color:var(--pri);font-weight:600;font-size:14px;white-space:nowrap}
+.grid{display:grid;gap:20px}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g2{grid-template-columns:1fr 1fr}
+.card{background:var(--surf);border:1px solid var(--line);border-radius:18px;padding:24px;transition:.2s;display:block}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--pri)}
+.date{font-size:12px;font-weight:700;color:var(--pri2);text-transform:uppercase;letter-spacing:.06em}
+.card h3{font-size:18px;line-height:1.35;margin:8px 0}
+.card p{margin:0;color:var(--mute);font-size:14.5px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.feat{grid-column:span 2;background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff;border:0}
+.feat .date,.feat p{color:rgba(255,255,255,.85)}
+.feat h3{font-size:26px}
+.feat p{-webkit-line-clamp:4}
+.promo{border-radius:22px;padding:34px;color:#fff;display:block;position:relative;overflow:hidden;min-height:230px}
+.promo.a{background:linear-gradient(135deg,#0b8f8a,#0b1f66)}
+.promo.b{background:linear-gradient(135deg,#e8a317,#c2410c)}
+.promo h3{font-size:26px;margin:0 0 10px}
+.promo p{max-width:440px;opacity:.92;margin:0 0 18px;font-size:15px}
+.promo em{font-style:normal;font-weight:700;border-bottom:2px solid rgba(255,255,255,.6)}
+.vid{display:flex;gap:14px;align-items:center;background:var(--surf);border:1px solid var(--line);border-radius:16px;padding:14px}
+.play{flex:none;width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,var(--pri),var(--pri2));display:grid;place-items:center;color:#fff}
+.vid h4{margin:0;font-size:14.5px;line-height:1.4}
+.tabs{display:flex;gap:8px;flex-wrap:wrap}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{background:var(--surf);border:1px solid var(--line);padding:10px 18px;border-radius:99px;font-size:14px;font-weight:600;color:var(--mute)}
+.chip:hover{color:var(--pri);border-color:var(--pri)}
+footer{margin-top:80px;background:var(--hero1);color:#cfd8f5;padding:52px 0 calc(28px + env(safe-area-inset-bottom,0px))}
+.fg{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:34px}
+footer h5{color:#fff;margin:0 0 12px;font-size:14px}
+footer a{display:block;padding:3px 0;font-size:14px;opacity:.85}
+footer a:hover{opacity:1}
+.copy{border-top:1px solid rgba(255,255,255,.12);margin-top:34px;padding-top:20px;font-size:13px;opacity:.7}
+@media (max-width:960px){
+nav{display:none;position:absolute;top:68px;left:0;right:0;flex-direction:column;background:var(--surf);padding:12px 20px;border-bottom:1px solid var(--line);max-height:75vh;overflow:auto;margin:0}
+nav.open{display:flex}
+.dd>button{width:100%;text-align:left}
+.menu{position:static;display:block;border:0;box-shadow:none;padding:0 0 6px 10px;min-width:0}
+#burger{display:block;margin-left:auto}
+.btn.nav{display:none}
+.stats{grid-template-columns:1fr 1fr}
+.g3,.g2,.fg{grid-template-columns:1fr}
+.feat{grid-column:auto}
+.hero{padding:52px 0 100px}
+}
+.top{background:var(--hero1);color:#cfd8f5;font-size:12.5px}.top .w{display:flex;justify-content:space-between;gap:12px;padding-top:7px;padding-bottom:7px}.top .tr{display:flex;gap:16px}.top a:hover{color:#fff}
+.car{position:relative;height:500px;overflow:hidden;color:#fff;background:var(--hero1)}
+.sl{position:absolute;inset:0;opacity:0;transition:opacity .8s;display:flex;align-items:center;padding-bottom:100px;pointer-events:none}.sl.on{opacity:1;pointer-events:auto}
+.s1{background:radial-gradient(circle at 85% 15%,rgba(63,208,201,.4),transparent 45%),linear-gradient(120deg,#06295c,#0b4ea2)}
+.s2{background:linear-gradient(90deg,rgba(6,41,92,.92) 35%,rgba(6,41,92,.35)),radial-gradient(circle at 80% 40%,#2f7dd1,#0a3a7a 60%)}
+.s3{background:linear-gradient(90deg,rgba(6,41,92,.92) 35%,rgba(6,41,92,.3)),radial-gradient(circle at 75% 30%,#c98a14,#6a3d08 65%)}
+.s4{background:linear-gradient(90deg,rgba(6,41,92,.92) 35%,rgba(6,41,92,.3)),radial-gradient(circle at 80% 50%,#12a08f,#064a47 65%)}
+.sl .w{width:100%}.sl h1{font-size:clamp(26px,4.4vw,46px)}.sl p{max-width:620px;opacity:.9;font-size:17px;margin:0 0 24px}
+.sl .btn{background:#fff;color:var(--hero1)}
+.ar{position:absolute;top:44%;width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.4);background:rgba(255,255,255,.12);color:#fff;font-size:26px;cursor:pointer;z-index:3}.ar.l{left:14px}.ar.r{right:14px}
+.dots{position:absolute;left:0;right:0;bottom:84px;display:flex;justify-content:center;gap:8px;z-index:3}.dots button{width:10px;height:10px;border-radius:9px;border:0;background:rgba(255,255,255,.4);cursor:pointer;padding:0;transition:.3s}.dots button.on{width:30px;background:#fff}
+.svc{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}.svc a{background:var(--surf);border:1px solid var(--line);border-radius:16px;padding:18px 12px;text-align:center;font-weight:600;font-size:14px;transition:.2s}.svc a:hover{border-color:var(--pri);color:var(--pri);transform:translateY(-3px)}.svc i{display:block;font-style:normal;font-size:28px;margin-bottom:8px}
+@media (max-width:960px){.svc{grid-template-columns:1fr 1fr 1fr}.car{height:520px}.ar{display:none}.top span:first-child{display:none}}
+</style>
+</head>
+<body>
+<div class="top"><div class="w"><span>Azərbaycan Respublikasının rəsmi dövlət platforması</span><span class="tr"><a href="tel:146">☎ 146-6</a><a href="#">Müraciət (MyGov)</a><a href="#"><b>AZ</b> / RU</a></span></div></div>
+<header><div class="w bar">
+<a class="logo" href="#top"><span class="mark">EA</span><span>Elm və Ali Təhsil üzrə<br>Dövlət Agentliyi</span></a>
+<nav id="nav">
+<div class="dd"><button>Agentlik</button><div class="menu"><a href="#">Haqqımızda</a><a href="#">Rəhbərlik</a><a href="#">Struktur</a><a href="#">Fəaliyyət istiqamətləri</a><a href="#">Sənədlər</a></div></div>
+<div class="dd"><button>Ali təhsil</button><div class="menu"><a href="#">Ali təhsil sistemi</a><a href="#">Ali təhsil müəssisələri</a><a href="#">Orta ixtisas təhsili müəssisələri</a><a href="#">Milli kvalifikasiyalar çərçivəsi</a><a href="#">Boloniya prosesi</a><a href="#">ESG</a></div></div>
+<div class="dd"><button>Elm</button><div class="menu"><a href="#">Elmi müəssisələr və təşkilatlar</a><a href="#">Elmi tədqiqatlar və innovasiyalar</a><a href="#">Elmi resurslar və məlumat bazası</a><a href="#">Elmi əməkdaşlıq və şəbəkələşmə</a><a href="#">Elmi jurnallar</a><a href="#">Maliyyə dəstəyi və qrantlar</a></div></div>
+<div class="dd"><button>Beynəlxalq əməkdaşlıq</button><div class="menu"><a href="#">Beynəlxalq fəaliyyətlər</a><a href="#">Azərbaycanda təhsil</a><a href="#">Xaricdə təhsil</a><a href="#">Beynəlxalq mübadilə proqramları</a><a href="#">Beynəlxalq reytinqlərdə iştirak</a><a href="#">Beynəlxalq üzvlüklər</a><a href="#">Beynəlxalq layihələr</a><a href="#">Beynəlxalq tədbirlər</a><a href="#">Beynəlxalq ikili diplom proqramları</a></div></div>
+<div class="dd"><button>Media</button><div class="menu"><a href="#xeber">Xəbərlər</a><a href="#meqale">Məqalələr</a><a href="#">Elanlar</a><a href="#video">Videolar</a><a href="#">Məlumatlar</a><a href="#">Layihələr</a><a href="#">Tədbirlər</a></div></div>
+</nav>
+<button class="ic" id="theme" aria-label="Mövzu">◐</button>
+<a class="btn nav" href="#elaqe">Bizimlə əlaqə</a>
+<button class="ic" id="burger" aria-label="Menyu">☰</button>
+</div></header>
+
+<main id="top">
+<div class="car">
+<div class="sl on s1"><div class="w"><span class="tag">Azərbaycan Respublikası · 2022-ci ildən</span><h1>Elm və Ali Təhsil üzrə Dövlət Agentliyi</h1><p>Agentlik Azərbaycan Respublikası Prezidentinin 2022-ci il 28 iyul tarixli Fərmanı ilə elm və təhsilin qarşılıqlı əlaqəsinin möhkəmləndirilməsi və bu sahələrdə idarəetmənin təkmilləşdirilməsi məqsədilə yaradılıb.</p><a class="btn" href="#">Ətraflı məlumat →</a></div></div>
+<div class="sl s2"><div class="w"><span class="tag">14.10.2026 · Xəbər</span><h1>9 nəfər Azərbaycan vətəndaşı Qazaxıstanda təhsil alacaq</h1><p>Hökumətlərarası Təqaüd Proqramı (HTP) çərçivəsində 2026–2027-ci tədris ili üzrə Qazaxıstanın ali təhsil müəssisələrində təhsil almaq hüququ qazanıblar.</p><a class="btn" href="#xeber">Xəbərə bax →</a></div></div>
+<div class="sl s3"><div class="w"><span class="tag">12.10.2026 · Təhsil qrantı</span><h1>“Heydər Əliyev adına Beynəlxalq Təhsil Qrantı”: 55 ölkədən 100 nəfər</h1><p>64 ölkədən müraciət etmiş yüzlərlə namizəd arasından 100 nəfər təhsil qrantına layiq görülüb.</p><a class="btn" href="#xeber">Xəbərə bax →</a></div></div>
+<div class="sl s4"><div class="w"><span class="tag">16.10.2026 · Məqalə</span><h1>Azərbaycan–Özbəkistan Rektorlar Forumunda 50-yə yaxın sənəd imzalanacaq</h1><p>Forum çərçivəsində universitetlərin həyata keçirəcəyi tədbirləri əhatə edən birgə fəaliyyət planı hazırlanıb.</p><a class="btn" href="#meqale">Oxu →</a></div></div>
+<button class="ar l" id="pv" aria-label="Əvvəlki">‹</button><button class="ar r" id="nx" aria-label="Növbəti">›</button>
+<div class="dots" id="dots"></div>
+</div>
+
+<div class="w stats">
+<div class="stat"><b>51</b><span>ali təhsil müəssisəsi</span></div>
+<div class="stat"><b>61</b><span>orta ixtisas təhsili müəssisəsi</span></div>
+<div class="stat"><b>18</b><span>elmi-tədqiqat institutu və müəssisə</span></div>
+<div class="stat"><b>38</b><span>EATDA-ya tabe orta ixtisas müəssisəsi</span></div>
+</div>
+
+<section><div class="w"><div class="svc">
+<a href="#"><i>🧭</i>Virtual bələdçi</a><a href="#"><i>🗂️</i>Xidmətlər</a><a href="#"><i>📅</i>Təqvim</a><a href="#"><i>🎓</i>HTP təqaüdləri</a><a href="#"><i>📞</i>Çağrı mərkəzi 146-6</a><a href="#"><i>📄</i>Sənədlər</a>
+</div></div></section>
+
+<section id="xeber"><div class="w">
+<div class="head"><div><h2>Xəbərlər</h2><p>Agentliyin elm və ali təhsil sahəsindəki ən son yenilik və fəaliyyətləri haqqında məlumat alın.</p></div><a class="more" href="#">Hamısına bax →</a></div>
+<div class="grid g3">
+<a class="card feat" href="#"><span class="date">14.10.2026 · 10:50</span><h3>9 nəfər Azərbaycan vətəndaşı Qazaxıstanda təhsil alacaq</h3><p>Azərbaycan və Qazaxıstan arasında Hökumətlərarası Təqaüd Proqramı (HTP) çərçivəsində 9 nəfər Azərbaycan vətəndaşı 2026–2027-ci tədris ili üzrə Qazaxıstanın ali təhsil müəssisələrində təhsil almaq hüququ qazanıb.</p></a>
+<a class="card" href="#"><span class="date">13.10.2026</span><h3>QANAD layihəsi çərçivəsində tələbələrlə görüş keçirilib</h3><p>Oktyabrın 12-də Bakıdakı internat məktəblərinin məzunları arasından peşə və orta ixtisas təhsili müəssisələrinə qəbul olunan tələbələrlə görüş keçirilib.</p></a>
+<a class="card" href="#"><span class="date">12.10.2026</span><h3>XİN və ETN-nin birgə mətbuat məlumatı</h3><p>“Heydər Əliyev adına Beynəlxalq Təhsil Qrantı” proqramı üzrə 55 ölkədən 100 nəfər təhsil qrantına layiq görülüb.</p></a>
+<a class="card" href="#"><span class="date">08.10.2026</span><h3>Beynəlxalq elmi bazalardan səmərəli istifadəyə dair təlim</h3><p>“ProQuest Central” və “Web of Science” bazalarından səmərəli istifadə mövzusunda təlim keçirilib.</p></a>
+<a class="card" href="#"><span class="date">07.10.2026</span><h3>8 nəfər tacikistanlı HTP ilə Azərbaycanda təhsil alacaq</h3><p>2026–2027-ci tədris ili üzrə 8 Tacikistan vətəndaşı Azərbaycanın ali təhsil müəssisələrində təhsil almaq hüququ qazanıb.</p></a>
+<a class="card" href="#"><span class="date">05.10.2026</span><h3>23 çinli tələbə HTP çərçivəsində Azərbaycanda təhsil alacaq</h3><p>Azərbaycan və Çin arasında təhsil sahəsində əməkdaşlıq sazışi çərçivəsində 23 Çin vətəndaşı təhsil hüququ qazanıb.</p></a>
+</div></div></section>
+
+<section><div class="w"><div class="grid g2">
+<a class="promo a" href="#"><h3>Azərbaycanda təhsil</h3><p>studyinazerbaijan.edu.az xarici ölkə vətəndaşlarının Azərbaycan universitetlərində təhsili barədə rəsmi məlumat mənbəyidir.</p><em>Ətraflı məlumat →</em></a>
+<a class="promo b" href="#"><h3>Xaricdə təhsil</h3><p>Dövlət hesabına təhsil “2022–2028-ci illər üçün Dövlət Proqramı” və “Hökumətlərarası Təqaüd Proqramları” çərçivəsində həyata keçirilir.</p><em>Ətraflı məlumat →</em></a>
+</div></div></section>
+
+<section id="video"><div class="w">
+<div class="head"><div><h2>Videolar</h2><p>Elm və ali təhsil mövzularında hazırlanmış maarifləndirici və rəsmi videolarla tanış olun.</p></div><a class="more" href="#">Hamısına bax →</a></div>
+<div class="grid g3">
+<a class="vid" href="#"><span class="play">▶</span><h4>Əcnəbi tələbələrin Azərbaycan universitetlərinə marağı artır</h4></a>
+<a class="vid" href="#"><span class="play">▶</span><h4>Türkiyə–Azərbaycan Universitetinin tanıtım çarxı</h4></a>
+<a class="vid" href="#"><span class="play">▶</span><h4>Tələbələrin yerdəyişməsi üçün elektron portaldan istifadəyə dair video təlimat</h4></a>
+<a class="vid" href="#"><span class="play">▶</span><h4>2026–2027-ci tədris ili üçün tələbələrin yerdəyişməsi iyulun 13-dən başlayır</h4></a>
+<a class="vid" href="#"><span class="play">▶</span><h4>Heydər Əliyevin anadan olmasının 103-cü ildönümünə həsr olunan sərgi</h4></a>
+<a class="vid" href="#"><span class="play">▶</span><h4>İlk açıq çıxışlı rəqəmsal repozitariya barədə İltifat İbrahimovun müsahibəsi</h4></a>
+</div></div></section>
+
+<section id="meqale"><div class="w">
+<div class="head"><div><h2>Məqalələr</h2><p>Elm və ali təhsil mövzularında analitik məqalələrə burada baxın.</p></div><a class="more" href="#">Hamısına bax →</a></div>
+<div class="grid g3">
+<a class="card" href="#"><span class="date">16.10.2026</span><h3>Azərbaycan–Özbəkistan Rektorlar Forumunda 50-yə yaxın sənəd imzalanacaq</h3><p>İkinci Rektorlar Forumu çərçivəsində əməkdaşlığın praktiki nəticələrini əhatə edən birgə fəaliyyət planı hazırlanıb.</p></a>
+<a class="card" href="#"><span class="date">07.10.2026</span><h3>“Anamın yolunu davam etdirəcəyəm” – Mərakeşin ilk azərbaycanlı tələbəsi</h3><p>Ayla Mustafayeva Rabatda yeni universitet, yeni dil və yeni akademik mühitlə üz-üzə qalacaq.</p></a>
+<a class="card" href="#"><span class="date">24.08.2026</span><h3>Azərbaycan və Özbəkistan alimləri coğrafi və ekoloji problemləri müqayisəli tədqiq edirlər</h3><p>İki ölkə arasında hərtərəfli əməkdaşlıq iqtisadiyyatdan elm və təhsilə qədər dinamik inkişaf edir.</p></a>
+<a class="card" href="#"><span class="date">21.08.2026</span><h3>HTP qalibi: Çin dilinə marağım məni yenidən Şanxaya aparır</h3><p>Aytac Səfərli Çin dilinə olan marağını təhsillə birləşdirərək ikinci dəfə bu ölkədə təhsil almağa hazırlaşır.</p></a>
+<a class="card" href="#"><span class="date">13.08.2026</span><h3>Rəvan Mehralıyev: Məqsədim daha təhlükəsiz rəqəmsal sistemlər qurmaqdır</h3><p>ADA məzunu Çjetszyan Universitetində kiberməkan təhlükəsizliyi ixtisası üzrə magistratura təhsili alacaq.</p></a>
+<a class="card" href="#"><span class="date">12.08.2026</span><h3>Çində təhsil alacaq BDU məzunu: Bu təqaüd sadəcə təhsil imkanı deyil</h3><p>20 nəfər Azərbaycan vətəndaşı Çinin nüfuzlu ali təhsil müəssisələrində təhsil almaq imkanı qazanıb.</p></a>
+</div></div></section>
+
+<section><div class="w">
+<div class="head"><div><h2>Faydalı keçidlər</h2></div></div>
+<div class="chips">
+<a class="chip" href="https://edu.gov.az">edu.gov.az</a><a class="chip" href="https://sabah.edu.az">sabah.edu.az</a><a class="chip" href="https://studyinazerbaijan.edu.az">studyinazerbaijan.edu.az</a><a class="chip" href="https://htp.edu.az/az/index">htp.edu.az</a><a class="chip" href="https://code.edu.az/forfuture/">code.edu.az</a><a class="chip" href="https://clarivate.com">Clarivate</a><a class="chip" href="https://www.scopus.com">Scopus</a><a class="chip" href="https://www.qs.com">QS</a><a class="chip" href="https://www.elsevier.com">Elsevier</a><a class="chip" href="https://www.ceenqa.org/">CEENQA</a><a class="chip" href="https://www.enqa.eu/">ENQA</a>
+</div></div></section>
+</main>
+
+<footer id="elaqe"><div class="w">
+<div class="fg">
+<div><a class="logo" href="#top" style="color:#fff;max-width:none"><span class="mark">EA</span><span>Elm və Ali Təhsil üzrə<br>Dövlət Agentliyi</span></a>
+<p style="font-size:14px;opacity:.8;margin-top:16px">Agentliyin missiyası Azərbaycanda elmin və ali təhsilin inkişafını təmin etmək, bu sahədə dövlət siyasətinin həyata keçirilməsini dəstəkləmək, ölkənin strateji hədəflərinə uyğun kadr hazırlığına töhfə verməkdir.</p></div>
+<div><h5>Bölmələr</h5><a href="#">Agentlik</a><a href="#">Ali təhsil</a><a href="#">Elm</a><a href="#">Beynəlxalq əməkdaşlıq</a><a href="#">Media</a><a href="#">Bizimlə əlaqə</a></div>
+<div><h5>Sosial şəbəkələr</h5><a href="https://www.facebook.com/eatdaeduaz">Facebook</a><a href="https://www.linkedin.com/company/eatdaeduaz">LinkedIn</a><a href="https://www.instagram.com/eatda_eduaz/">Instagram</a><a href="https://www.youtube.com/@eatdaeduaz">YouTube</a></div>
+</div>
+<div class="copy">2026 © Bütün hüquqlar qorunur.</div>
+</div></footer>
+
+<script>
+(function(){var s=document.querySelectorAll('.sl'),d=document.getElementById('dots'),i=0,t;s.forEach(function(_,k){var b=document.createElement('button');b.onclick=function(){go(k)};d.appendChild(b)});function go(n){i=(n+s.length)%s.length;s.forEach(function(e,k){e.classList.toggle('on',k===i);d.children[k].classList.toggle('on',k===i)});clearInterval(t);t=setInterval(function(){go(i+1)},6000)}document.getElementById('pv').onclick=function(){go(i-1)};document.getElementById('nx').onclick=function(){go(i+1)};go(0)})();
+document.getElementById('burger').onclick=function(){document.getElementById('nav').classList.toggle('open')};
+document.getElementById('theme').onclick=function(){var r=document.documentElement,d=getComputedStyle(r).getPropertyValue('--bg').trim()==='#0a1020';r.setAttribute('data-theme',d?'light':'dark')};
+</script>
+</body>
+</html>
